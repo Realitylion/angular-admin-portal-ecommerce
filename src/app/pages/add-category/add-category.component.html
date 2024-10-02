@@ -1,0 +1,18 @@
+<div class="container">
+    <h2 class="text-center mt-4">Add New Category</h2>
+    <form [formGroup]="addCategoryForm" (ngSubmit)="onSubmit()">
+  
+      <div class="form-group">
+        <label for="categoryName">Category Name</label>
+        <input type="text" id="categoryName" formControlName="categoryName" class="form-control" placeholder="Enter category name" />
+        @if (addCategoryForm.controls['categoryName'].invalid && addCategoryForm.controls['categoryName'].touched) {
+            <div class="text-danger">
+                Category name should be at least 3 characters.
+            </div>
+        }
+      </div>
+  
+      <button type="submit" class="btn btn-success mt-3" [disabled]="addCategoryForm.invalid">Create Category</button>
+    </form>
+</div>
+  
