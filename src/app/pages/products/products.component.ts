@@ -38,4 +38,20 @@ export class ProductsComponent implements OnInit {
       map(item => item.data)
     );
   }
+
+  deleteProductById(productId: number): void {
+    try {
+      this.productService.deleteProduct(productId).subscribe(response => {
+        if (response.result === false) {
+          alert("Something went wrong, cannot delete this item");
+        } else {
+          console.log("Response: ", response);
+          alert("Product deleted successfully");
+          window.location.reload(); 
+        }
+      })
+    } catch (err) {
+      console.error(err);
+    }
+  }
 }
