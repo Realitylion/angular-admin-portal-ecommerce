@@ -1,0 +1,18 @@
+<div class="container">
+    <h2 class="text-center mt-4">Delete Category</h2>
+    <form [formGroup]="deleteCategoryForm" (ngSubmit)="onSubmit()">
+        
+        <div class="form-group">
+            <label for="categoryId">Category</label>
+            <select id="categoryId" formControlName="categoryId" class="form-control">
+              <option value="" disabled>Select Category</option>
+              @for (item of categoryList$ | async; track $index) {
+                  <option [value]="item.categoryId">{{ item.categoryName }}</option>
+              }
+            </select>
+        </div>
+  
+      <button type="submit" class="btn btn-danger mt-3" [disabled]="deleteCategoryForm.invalid">Delete Category</button>
+    </form>
+</div>
+  

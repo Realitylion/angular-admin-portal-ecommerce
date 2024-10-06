@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { APIResponseModel, ProductModel } from '../models/product';
+import { APIResponseModel } from '../models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +31,10 @@ export class ProductService {
 
   addCategory(category: any): Observable<any> {
     return this.http.post(this.apiUrl + "CreateNewCategory", category);
+  }
+
+  deleteCategory(categoryId: number | undefined): Observable<APIResponseModel> {
+    const url = `${this.apiUrl}DeleteCategoryById?id=${categoryId}`;
+    return this.http.get<APIResponseModel>(url);
   }
 }
