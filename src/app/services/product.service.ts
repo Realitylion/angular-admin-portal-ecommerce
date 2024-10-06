@@ -29,6 +29,10 @@ export class ProductService {
     return this.http.post(this.apiUrl + "CreateProduct", product);
   }
 
+  updateProduct(product: any): Observable<any> {
+    return this.http.post<APIResponseModel>(this.apiUrl + "UpdateProduct", product);
+  }
+
   deleteProduct(productId: number): Observable<APIResponseModel> {
     const url = `${this.apiUrl}DeleteProductById?id=${productId}`;
     return this.http.get<APIResponseModel>(url);
